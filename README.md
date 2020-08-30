@@ -9,5 +9,5 @@ Tibia is a registered trademark of CipSoft GmbH. Tibia and all products related 
 # Running the spider
 `scrapy crawl tibiabazaar -o [filename].csv`
 
-# Explaning the Fields
+# Fields position
 ![explaning the fields](https://github.com/marcoswds/tibiabazaar/blob/master/scheme.png)
