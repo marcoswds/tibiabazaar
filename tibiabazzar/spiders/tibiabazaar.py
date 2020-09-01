@@ -13,7 +13,8 @@ class TibiabazaarSpider(scrapy.Spider):
 
         current_page = response.css(".CurrentPageLink::text").get()
 
-        next_page = self.next_page + str(int(current_page) +1)
+        if current_page == 'First Page':
+            current_page = 1               
 
         chars = response.css(".Auction")
 
@@ -69,14 +70,9 @@ class TibiabazaarSpider(scrapy.Spider):
 
             yield items
 
-        print(current_page)
-        print(pages)
+        if current_page != 'Last Page':
 
-
-        if int(current_page) < int(pages):         
-
-            print("---------------------")
-            print(next_page)
+            next_page = self.next_page + str(int(current_page) +1)           
 
             yield scrapy.Request(
                 response.urljoin(next_page),
